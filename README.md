@@ -1,9 +1,7 @@
 # Desafio de programação orientada a testes
 
 Dark sky é um serviço de previsão do tempo por API. Temos uma função que faz uma requisição para a api
-do Dark sky passando a latitude e a longitude de algum lugar no planeta e a api retorna a temperatura. Nossa função
-converte para celsius e retorna o valor da temperatura.
-
+do Dark sky passando a latitude e a longitude de algum lugar no planeta e a api retorna a temperatura. Nossa função converte para celsius e retorna o valor da temperatura.
 
 Escreva um teste que seja possível testar off-line a chamada para api do Dark sky e a conversão para celsius.
 Use a bibliteca Pytest e os seguntes dados para testar a função **get_temperature**.
@@ -32,7 +30,7 @@ O recomendado é você utilizar um [ambiente virtual](https://pythonacademy.com.
 
     pip3 install virtualenv
     virtualenv venv -p python3
-    source venv/bin/activate 
+    source venv/bin/activate
     pip install -r requirements.txt
 
 Ao terminar o desafio, você pode sair do ambiente criado com o comando `deactivate`
