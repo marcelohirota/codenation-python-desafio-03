@@ -1,18 +1,38 @@
-from main import get_temperature
-import requests
 import pytest
+import requests
+from main import get_temperature
+from unittest.mock import patch
 
-# Testando a conexão com a API (status 200 para conexão feita)
+
+# Values to be used on test
+
+parametrized_values = [
+    (-14.235004, -51.92528, 62, 16)
+]
+
+# Testing temperature by location
+
+
+@pytest.mark.parametrize('lat, lng, temperature, expected', parametrized_values)
+def test_get_temperature_by_lat_lng(lat, lng, temperature, expected):
+    mock_get_patcher = patch('main.requests.get')
+
+    temp = {'currently': {'temperature': temperature}}
+
+    mock = mock_get_patcher.start()
+
+    mock.return_value.json.return_value = temp
+
+    result = get_temperature(lat, lng)
+
+    mock_get_patcher.stop()
+
+    assert result == expected
+
+# Testing connection (code 200 for a valid connection)
 
 
 def test_valid_connection():
-    lat = -14.235004
-    lng = -51.92528
-    key = 'e1ee55658d4a2b28c4841e373c3b3d87'
-    url = 'https://api.darksky.net/forecast/{}/{},{}'.format(key, lat, lng)
-    response = requests.get(url)
+    response = requests.get('https://api.darksky.net/v1/status.txt')
+
     assert response.status_code == 200
-
-
-def test_get_temperature_by_lat_lng():
-    pass
