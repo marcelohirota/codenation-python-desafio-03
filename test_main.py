@@ -29,7 +29,7 @@ def test_get_temperature_by_lat_lng(lat, lng, temperature, expected):
 
     assert result == expected
 
-# Testing connection (code 200 for a valid connection)
+# Testing connection with API (code 200 for a valid connection)
 
 
 def test_valid_connection():
